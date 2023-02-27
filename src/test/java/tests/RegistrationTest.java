@@ -6,11 +6,11 @@ import org.testng.annotations.Test;
 public class RegistrationTest extends BaseTest{
 
     @Test
-    public void newUserRegistrationTest(User testUser){
+    public void newUserRegistrationTest(){
         homePage.clickLoginButton();
-        authenticationOnePage.emailNewInput(userEmail);
-        authenticationOnePage.clickCreateButton();
-        User.builder()
+        authenticationFirstStepPage.emailNewInput(userEmail);
+        authenticationFirstStepPage.clickCreateButton();
+        User testUser = User.Builder()
                 .lastName(faker.name().lastName())
                 .firstName(faker.name().firstName())
                 .password(faker.internet().password())

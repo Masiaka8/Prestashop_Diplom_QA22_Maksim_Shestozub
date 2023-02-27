@@ -4,9 +4,9 @@ import elements.Input;
 import org.openqa.selenium.WebDriver;
 import dataModels.User;
 
-public class newUserModal extends BaseModal {
+public class NewUserModal extends BaseModal {
 
-    public newUserModal(WebDriver driver) {
+    public NewUserModal(WebDriver driver) {
         super(driver);
     }
 

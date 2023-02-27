@@ -2,7 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import modals.newUserModal;
+import modals.NewUserModal;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,9 +25,9 @@ public abstract class BaseTest {
     protected String userPassword;
     protected WebDriver driver;
     protected HomePage homePage;
-    protected AuthenticationOnePage authenticationOnePage;
-    protected AuthenticationTwoPage authenticationTwoPage;
-    protected newUserModal newUserModal;
+    protected AuthenticationFirstStepPage authenticationFirstStepPage;
+    protected AuthenticationSecondStepPage authenticationSecondStepPage;
+    protected NewUserModal newUserModal;
 
 
     @BeforeClass(alwaysRun = true)
@@ -53,15 +53,15 @@ public abstract class BaseTest {
         testContext.setAttribute("driver", driver);
 
         homePage = new HomePage(driver);
-        authenticationOnePage = new AuthenticationOnePage(driver);
-        authenticationTwoPage = new AuthenticationTwoPage(driver);
-        newUserModal = new newUserModal(driver);
+        authenticationFirstStepPage = new AuthenticationFirstStepPage(driver);
+        authenticationSecondStepPage = new AuthenticationSecondStepPage(driver);
+        newUserModal = new NewUserModal(driver);
 
     }
 
     public void userRegistration() {
         userEmail = faker.internet().emailAddress();
-        //userPassword = faker.internet().password();
+        userPassword = faker.internet().password();
     }
 
 

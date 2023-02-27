@@ -3,11 +3,11 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AuthenticationTwoPage extends BasePage{
+public class AuthenticationSecondStepPage extends BasePage{
 
     public final By REGISTER_BUTTON_LOCATOR = By.id("submitAccount");
 
-    public AuthenticationTwoPage(WebDriver driver) {
+    public AuthenticationSecondStepPage(WebDriver driver) {
         super(driver);
     }
 

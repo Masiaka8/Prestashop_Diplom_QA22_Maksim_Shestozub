@@ -3,14 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AuthenticationOnePage extends BasePage{
+public class AuthenticationFirstStepPage extends BasePage{
 
     public final By INPUT_EMAIL_LOCATOR = By.id("email");
     public final By INPUT_PASSWORD_LOCATOR = By.id("passwd");
     public final By CREATE_BUTTON_LOCATOR = By.id("SubmitCreate");
     public final By INPUT_NEW_EMAIL_LOCATOR = By.id("email_create");
 
-    public AuthenticationOnePage(WebDriver driver) {
+    public AuthenticationFirstStepPage(WebDriver driver) {
         super(driver);
     }
 

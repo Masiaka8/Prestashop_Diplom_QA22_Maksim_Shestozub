@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import modals.NewAddressModal;
 import modals.NewUserModal;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,14 +21,17 @@ public abstract class BaseTest {
     public final static String BASE_URL = PropertyReader.getProperty("base_url");
     public final static String BASE_USERNAME = PropertyReader.getProperty("username");
     public final static String BASE_PASSWORD = PropertyReader.getProperty("password");
-    protected String userEmail;
-
+    protected String userEmail = faker.internet().emailAddress();
     protected String userPassword;
     protected WebDriver driver;
     protected HomePage homePage;
     protected AuthenticationFirstStepPage authenticationFirstStepPage;
     protected AuthenticationSecondStepPage authenticationSecondStepPage;
     protected NewUserModal newUserModal;
+    protected MyAccountPage myAccountPage;
+    protected NewAddressModal newAddressModal;
+    protected AddAddressPage addAddressPage;
+    protected MyAddressesPage myAddressesPage;
 
 
     @BeforeClass(alwaysRun = true)
@@ -56,6 +60,10 @@ public abstract class BaseTest {
         authenticationFirstStepPage = new AuthenticationFirstStepPage(driver);
         authenticationSecondStepPage = new AuthenticationSecondStepPage(driver);
         newUserModal = new NewUserModal(driver);
+        myAccountPage = new MyAccountPage(driver);
+        newAddressModal = new NewAddressModal(driver);
+        addAddressPage = new AddAddressPage(driver);
+        myAddressesPage = new MyAddressesPage(driver);
 
     }
 

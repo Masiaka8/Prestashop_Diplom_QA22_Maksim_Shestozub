@@ -10,7 +10,6 @@ public class NewUserModal extends BaseModal {
         super(driver);
     }
 
-
     public void fillFormUser(User user) {
         new Input(driver, "customer_firstname").setValue(user.getFirstName());
         new Input(driver, "customer_lastname").setValue(user.getLastName());

@@ -6,10 +6,12 @@ import enums.State;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddressTest extends BaseTest{
+public class CheckoutTest extends BaseTest{
 
-    @Test(groups = {"Regressive"}, description = "Test to add delivery address")
-    public void addNewAddress() {
+    private final static String ITEM_NAME ="Faded Short Sleeve T-shirts";
+
+    @Test(groups = {"Smoke"}, description = "Test to payment verification")
+    public void checkoutTest() {
         homePage.clickLoginButton();
         authenticationFirstStepPage.emailNewInput(userEmail);
         authenticationFirstStepPage.clickCreateButton();
@@ -33,6 +35,17 @@ public class AddressTest extends BaseTest{
                 .build();
         newAddressModal.fillFormAddress(testAddress);
         addAddressPage.clickSaveButton();
-        Assert.assertTrue(myAddressesPage.successfulCreatedAddressMessage());
+        baseModal.goToHomePage();
+        homePage.clickWomenButton();
+        womenPage.openItemByName(ITEM_NAME);
+        productDetailsPage.clickAddToCart();
+        productDetailsPage.waitForAddMessage();
+        productDetailsPage.clickCloseMessageButton();
+        baseModal.clickSoppingCartButton();
+        shoppingCartPage.clickProcessedToCheckoutButton();
+        shoppingCartPage.clickProcessedToCheckoutButtonForAddress();
+        shoppingCartPage.clickCheckboxIAgree();
+        shoppingCartPage.clickProcessedToCheckoutButton();
+        Assert.assertTrue(shoppingCartPage.checkoutMessage());
     }
 }

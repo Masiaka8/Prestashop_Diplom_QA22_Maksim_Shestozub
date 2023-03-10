@@ -1,55 +1,62 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import utils.PropertyReader;
 
 public class HomePage  extends BasePage{
 
-    private static final String BASE_URL = PropertyReader.getProperty("base_url");
-    private static final By LOGIN_LOCATOR = By.cssSelector("a.login");
-    private static final By SEARCH_LOCATOR = By.cssSelector("#search_query_top");
+    private static final By SIGN_IN_LOCATOR = By.cssSelector("a.login");
+    private static final By SEARCH_INPUT_LOCATOR = By.cssSelector("#search_query_top");
     private static final By WOMEN_BUTTON_LOCATOR = By.cssSelector(".sf-with-ul[title='Women']");
-    private static final By SHOPPING_CART_LOCATOR = By.xpath("//div[@class='shopping_cart']/./a");
     private static final By SIGN_OUT_LOCATOR = By.cssSelector("a.logout");
     private static final By MY_ACCOUNT_LOCATOR = By.cssSelector(".account");
-    private static final By POPULAR_BUTTON_LOCATOR = By.cssSelector(".homefeatured");
-    private static final By BESTSELLERS_BUTTON_LOCATOR = By.xpath("//*[@class='blockbestsellers']");
+    private static final By SEARCH_BUTTON_LOCATOR = By.cssSelector(".btn.btn-default.button-search");
+
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
+    @Step
     public void clickLoginButton() {
-        driver.findElement(LOGIN_LOCATOR).click();
+        logger.info("Clicking SignIn button");
+        driver.findElement(SIGN_IN_LOCATOR).click();
     }
 
+    @Step
     public void clickMyAccountButton() {
+        logger.info("Clicking MyAccount button");
         driver.findElement(MY_ACCOUNT_LOCATOR).click();
     }
 
-
-    public void searchItemToText(String item) {
-        WebElement search = driver.findElement(SEARCH_LOCATOR);
-        search.sendKeys(item);
-        search.sendKeys(Keys.ENTER);
+    @Step
+    public void setItemNameToSearchInput(String itemName){
+        logger.debug("Input ItemName {}", itemName );
+        driver.findElement(SEARCH_INPUT_LOCATOR).sendKeys(itemName);
     }
 
+    @Step
     public void clickWomenButton() {
+        logger.info("Clicking womenPage button");
         driver.findElement(WOMEN_BUTTON_LOCATOR).click();
     }
 
-    public void open() {
-        driver.get(BASE_URL);
-    }
-
-    public void clickOnTheShoppingCart() {
-        driver.findElement(SHOPPING_CART_LOCATOR).click();
-    }
-
+    @Step
     public void clickSignOutButton() {
+        logger.info("Clicking SignOut button");
         driver.findElement(SIGN_OUT_LOCATOR).click();
+    }
+
+    @Step
+    public void clickSearchButton() {
+        logger.info("Clicking search button");
+        driver.findElement(SEARCH_BUTTON_LOCATOR).click();
+    }
+
+    @Step
+    public boolean signInIsDisplayed() {
+        logger.info("SignIn button is displayed");
+        return driver.findElement(SIGN_IN_LOCATOR).isDisplayed();
     }
 }

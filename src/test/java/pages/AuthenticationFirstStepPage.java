@@ -26,19 +26,19 @@ public class AuthenticationFirstStepPage extends BasePage{
 
     @Step
     public void setUsername(String username) {
-        logger.debug("Input username {}", username );
+        logger.info("Input username {}", username );
         driver.findElement(INPUT_EMAIL_LOCATOR).sendKeys(username);
     }
 
     @Step
     public void setPassword(String password) {
-        logger.debug("Input password {}", password );
+        logger.info("Input password {}", password);
         driver.findElement(INPUT_PASSWORD_LOCATOR).sendKeys(password);
     }
 
     @Step
     public void emailNewInput(String newUsername) {
-        logger.debug("Input new email {}", newUsername );
+        logger.info("Input new email {}", newUsername);
         driver.findElement(INPUT_NEW_EMAIL_LOCATOR).sendKeys(newUsername);
     }
 
@@ -50,13 +50,13 @@ public class AuthenticationFirstStepPage extends BasePage{
 
     @Step
     public boolean invalidEmailMessage() {
-        logger.info("Message is displayed");
+        logger.info("Message about invalid email is displayed");
         return driver.findElement(SIGN_IN_ERROR_MESSAGE).isDisplayed();
     }
 
     @Step
     public void waitForInvalidMessage() {
-        logger.info("Wait message");
+        logger.info("Wait for invalid  SignIn message");
         waitForElementDisplayed(SIGN_IN_ERROR_MESSAGE);
     }
 }

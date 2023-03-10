@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Regressive Tests" parallel="tests" thread-count="2">
-    <test name="Regressive Tests on chrome">
-        <parameter name="browser" value="Chrome"></parameter>
-        <groups>
-            <run>
-                <include name="Regressive"/>
-            </run>
-        </groups>
-        <packages>
-            <package name="tests"/>
-        </packages>
-    </test>
-    <test name="Regressive Tests on edge">
-        <parameter name="browser" value="Edge"></parameter>
+<suite name="Regressive Tests">
+    <test name="Regressive Tests">
         <groups>
             <run>
                 <include name="Regressive"/>

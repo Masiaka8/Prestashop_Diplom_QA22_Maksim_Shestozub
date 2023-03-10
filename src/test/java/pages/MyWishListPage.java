@@ -14,8 +14,12 @@ public class MyWishListPage extends BasePage{
     }
 
     @Step
-    public String getAmountOfItem() {
-        logger.debug("Amount of item {}", getAmountOfItem());
-        return driver.findElement(WISH_LIST_LOCATOR).getText();
+    public int getAmountOfItem() {
+        logger.info("Getting amount of item");
+        int expResult;
+        String result = driver.findElement(WISH_LIST_LOCATOR).getText();
+        logger.info("Amount value: {}", result);
+        expResult = Integer.parseInt(result);
+        return expResult;
     }
 }

@@ -8,7 +8,8 @@ public class WishListTest extends BaseTest{
 
     private final static String ITEM_NAME ="Faded Short Sleeve T-shirts";
 
-    @Test(groups = {"Regressive"}, description = "Test to add item in wishlist. Assertion error after comparing 1 with 1")
+
+    @Test(groups = {"Regressive"}, description = "Test to add item in wishlist")
     public void addItemToWishlist() {
         homePage.clickLoginButton();
         authenticationFirstStepPage.emailNewInput(userEmail);

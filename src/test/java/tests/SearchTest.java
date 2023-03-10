@@ -11,7 +11,7 @@ public class SearchTest extends BaseTest{
     public void positiveSearchTest() {
         homePage.setItemNameToSearchInput(ITEM_NAME);
         homePage.clickSearchButton();
-        Assert.assertEquals(womenPage.getResultSearchMassageText(), "34 results have been found.");
+        Assert.assertEquals(womenPage.getResultSearchMessageText(), "34 results have been found.");
     }
 
     @Test(groups = {"Negative"}, description = "Negative search test without request")

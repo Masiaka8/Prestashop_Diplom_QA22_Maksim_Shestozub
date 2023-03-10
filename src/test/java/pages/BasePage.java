@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
+    protected final Logger logger = LogManager.getLogger(this.getClass().getName());
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -25,8 +26,6 @@ public abstract class BasePage {
     protected void waitForElementDisappear(By elmentLocator) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elmentLocator));
     }
-
-    protected final Logger logger = LogManager.getLogger(this.getClass().getName());
 }
 
 

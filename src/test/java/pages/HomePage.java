@@ -32,7 +32,7 @@ public class HomePage  extends BasePage{
 
     @Step
     public void setItemNameToSearchInput(String itemName){
-        logger.debug("Input ItemName {}", itemName );
+        logger.info("Input ItemName {}", itemName);
         driver.findElement(SEARCH_INPUT_LOCATOR).sendKeys(itemName);
     }
 

@@ -18,7 +18,7 @@ public class MyAccountPage extends BasePage{
 
     @Step
     public boolean successfulCreatedMessage(){
-        logger.info("Message is displayed");
+        logger.info("Message about successful created account is displayed");
         return driver.findElement(ACCOUNT_HAS_BEEN_CREATED_MESSAGE).isDisplayed();
     }
 
@@ -30,7 +30,7 @@ public class MyAccountPage extends BasePage{
 
     @Step
     public boolean successfulSignInMessage(){
-        logger.info("Message is displayed");
+        logger.info("Message about successful LogIn is displayed");
         return driver.findElement(SIGN_IN_MESSAGE).isDisplayed();
     }
 

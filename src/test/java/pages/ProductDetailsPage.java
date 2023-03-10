@@ -31,7 +31,7 @@ public class ProductDetailsPage extends BasePage{
 
     @Step
     public boolean addedItemMessage() {
-        logger.info("Message is displayed");
+        logger.info("Message about added item is displayed");
         return driver.findElement(ADDED_MESSAGE).isDisplayed();
     }
 

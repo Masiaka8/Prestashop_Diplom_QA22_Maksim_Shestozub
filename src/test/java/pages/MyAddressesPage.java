@@ -15,7 +15,7 @@ public class MyAddressesPage extends BasePage{
 
     @Step
     public boolean successfulCreatedAddressMessage(){
-        logger.info("Message is displayed");
+        logger.info("Message about successful created address is displayed");
         return driver.findElement(SUCCESS_ADD_ADDRESSES_LOCATOR).isDisplayed();
     }
 }

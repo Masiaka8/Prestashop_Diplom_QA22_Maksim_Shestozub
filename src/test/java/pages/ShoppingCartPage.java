@@ -8,10 +8,11 @@ public class ShoppingCartPage extends BasePage{
 
     private final static By DELETE_ITEM_BUTTON = By.cssSelector(".icon-trash");
     private final static By ITEM_PRICE_LOCATOR = By.cssSelector("#total_price");
-    private final static By PROCESSED_TO_CHECKOUT_BUTTON= By.xpath("//*[@class='button btn btn-default standard-checkout button-medium']");
-    private final static By PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS = By.xpath("//*[@class='button btn btn-default button-medium']");
+    private final static By PROCESSED_TO_CHECKOUT_BUTTON= By.cssSelector(".button.btn.btn-default.standard-checkout.button-medium");
+    private final static By PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS = By.cssSelector(".button.btn.btn-default.button-medium");
     private final static By I_AGREE_CHECKBOX_LOCATOR = By.cssSelector("#cgv");
     private final static By CHECKOUT_MESSAGE = By.cssSelector(".alert.alert-warning");
+    private final static By ITEM_LOCATOR = By.xpath("//td/p[@class='product-name']/a");
 
 
     public ShoppingCartPage(WebDriver driver) {
@@ -26,13 +27,15 @@ public class ShoppingCartPage extends BasePage{
 
     @Step
     public String getItemPrice() {
-        logger.debug("Item price {}", getItemPrice());
-        return driver.findElement(ITEM_PRICE_LOCATOR).getText();
+        logger.info("Getting item price");
+        String itemPrice = driver.findElement(ITEM_PRICE_LOCATOR).getText();
+        logger.info("Price value: {}", itemPrice);
+        return itemPrice;
     }
 
     @Step
     public void clickProcessedToCheckoutButtonForAddress() {
-        logger.info("Clicking ProcessedToCheckout button");
+        logger.info("Clicking ProcessedToCheckout for address button");
         driver.findElement(PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS).click();
     }
 
@@ -50,7 +53,12 @@ public class ShoppingCartPage extends BasePage{
 
     @Step
     public boolean checkoutMessage() {
-        logger.info("Message is displayed");
+        logger.info("Message about buying is displayed");
         return driver.findElement(CHECKOUT_MESSAGE).isDisplayed();
+    }
+
+    public String getItemName() {
+        String itemName = driver.findElement(ITEM_LOCATOR).getText();
+        return itemName;
     }
 }

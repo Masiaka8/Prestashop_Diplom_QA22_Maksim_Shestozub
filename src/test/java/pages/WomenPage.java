@@ -25,33 +25,35 @@ public class WomenPage extends BasePage{
     }
 
     @Step
-    public String getResultSearchMassageText() {
-        logger.debug("Message {}", getResultSearchMassageText());
-        return driver.findElement(RESULT_SEARCH_MESSAGE).getText();
+    public String getResultSearchMessageText() {
+        logger.info("Getting result search message");
+        String resultMessage = driver.findElement(RESULT_SEARCH_MESSAGE).getText();
+        logger.info("Result search: {}", resultMessage);
+        return resultMessage;
     }
 
     @Step
     public boolean resultSearchErrorMessage() {
-        logger.info("Message is displayed");
+        logger.info("Message about results search is displayed");
         return driver.findElement(ERROR_RESULT_SEARCH_MESSAGE).isDisplayed();
     }
 
     @Step
     private WebElement getProductContainerByName(String itemName) {
-        logger.debug("Get product container {}", itemName );
+        logger.info("Get product container {}", itemName);
         return driver.findElement(By.xpath(String.format(PRODUCT_CONTAINER_LOCATOR, itemName)));
     }
 
     @Step
     public void openItemByName(String itemName) {
-        logger.debug("Open item {}", itemName );
+        logger.info("Open item {}", itemName);
         WebElement productContainer = getProductContainerByName(itemName);
         productContainer.findElement(PRODUCT_LOCATOR).click();
     }
 
     @Step
     public void selectSortingOrderOption (String optionName) {
-        logger.debug("Selecting {}", optionName );
+        logger.info("Selecting {}", optionName );
         Select select = new Select(driver.findElement(DROPDOWN_SORTING_LOCATOR));
         select.selectByVisibleText(optionName);
     }

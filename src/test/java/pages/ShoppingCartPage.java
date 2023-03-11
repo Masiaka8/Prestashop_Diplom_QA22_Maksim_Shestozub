@@ -58,7 +58,9 @@ public class ShoppingCartPage extends BasePage{
     }
 
     public String getItemName() {
+        logger.info("Getting item name");
         String itemName = driver.findElement(ITEM_LOCATOR).getText();
+        logger.info("Item name: {}", itemName);
         return itemName;
     }
 }

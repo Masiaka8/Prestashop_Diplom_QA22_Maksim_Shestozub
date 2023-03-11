@@ -16,7 +16,7 @@ public class CartTest extends BaseTest{
         Assert.assertTrue(productDetailsPage.addedItemMessage());
         productDetailsPage.clickCloseMessageButton();
         baseModal.clickSoppingCartButton();
-        Assert.assertEquals(shoppingCartPage.getItemName(), "Faded Short Sleeve T-shirts");
+        Assert.assertEquals(shoppingCartPage.getItemName(), ITEM_NAME);
     }
 
     @Test(groups = {"Regressive"}, description = "Always failing test to delete item")

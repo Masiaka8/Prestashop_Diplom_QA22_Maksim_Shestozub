@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WomenPage extends BasePage{
+public class WomenPage extends BasePage {
 
     private final static By RESULT_SEARCH_MESSAGE = By.xpath("//span[@class='heading-counter']");
     private final static By ERROR_RESULT_SEARCH_MESSAGE = By.cssSelector(".alert.alert-warning");
@@ -52,8 +52,8 @@ public class WomenPage extends BasePage{
     }
 
     @Step
-    public void selectSortingOrderOption (String optionName) {
-        logger.info("Selecting {}", optionName );
+    public void selectSortingOrderOption(String optionName) {
+        logger.info("Selecting {}", optionName);
         Select select = new Select(driver.findElement(DROPDOWN_SORTING_LOCATOR));
         select.selectByVisibleText(optionName);
     }
@@ -65,7 +65,7 @@ public class WomenPage extends BasePage{
     }
 
     @Step
-    public List<String> getSortingListItemName (){
+    public List<String> getSortingListItemName() {
         List<WebElement> listItemName = driver.findElements(ITEM_BUTTON);
         List<String> allListItemName = listItemName.stream().map(WebElement::getText).collect(Collectors.toList());
         return allListItemName;
@@ -75,5 +75,13 @@ public class WomenPage extends BasePage{
     public void clickOptionBags() {
         logger.info("Clicking bags checkbox");
         driver.findElement(OPTION_BAGS_LOCATOR).click();
+    }
+
+    @Step
+    public void setFilter(String filterName) {
+        List<WebElement> checkbox = driver.findElements(By.cssSelector("#ul_layered_category_0"));
+        for (int i = 0; i < checkbox.size(); i++) {
+            checkbox.get(i).click();
+        }
     }
 }

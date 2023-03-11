@@ -42,6 +42,7 @@ public abstract class BaseTest {
         String headless = System.getProperty("headless", "false");
         if(browserName.equals("Chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--window-size=1900,600");
             if(headless.equals("true")) {
                 options.addArguments("--headless");}
             WebDriverManager.chromedriver().setup();

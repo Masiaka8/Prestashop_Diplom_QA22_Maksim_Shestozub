@@ -28,6 +28,7 @@ public class CartTest extends BaseTest{
         productDetailsPage.clickCloseMessageButton();
         baseModal.clickSoppingCartButton();
         shoppingCartPage.clickDeleteItemButton();
+        shoppingCartPage.waitFarTrashButtonIsDisappear();
         Assert.assertEquals(shoppingCartPage.getItemPrice(), 0);
     }
 }

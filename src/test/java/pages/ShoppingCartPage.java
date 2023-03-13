@@ -26,6 +26,12 @@ public class ShoppingCartPage extends BasePage{
     }
 
     @Step
+    public void waitFarTrashButtonIsDisappear() {
+        logger.info("Wait for trashButton is disappear");
+        waitForElementDisappear(DELETE_ITEM_BUTTON);
+    }
+
+    @Step
     public String getItemPrice() {
         logger.info("Getting item price");
         String itemPrice = driver.findElement(ITEM_PRICE_LOCATOR).getText();

@@ -46,11 +46,6 @@ public class ShoppingCartPage extends BasePage{
     }
 
     @Step
-    public void WaitQWER(){
-        waitForElementDisplayed(PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS);
-    }
-
-    @Step
     public void clickProcessedToCheckoutButton() {
         logger.info("Clicking ProcessedToCheckout button");
         driver.findElement(PROCESSED_TO_CHECKOUT_BUTTON).click();

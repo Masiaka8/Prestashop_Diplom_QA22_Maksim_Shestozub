@@ -9,7 +9,7 @@ public class ShoppingCartPage extends BasePage{
     private final static By DELETE_ITEM_BUTTON = By.cssSelector(".icon-trash");
     private final static By ITEM_PRICE_LOCATOR = By.cssSelector("#total_price");
     private final static By PROCESSED_TO_CHECKOUT_BUTTON= By.cssSelector(".button.btn.btn-default.standard-checkout.button-medium");
-    private final static By PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS = By.cssSelector(".button.btn.btn-default.button-medium");
+    private final static By PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS = By.xpath("//*[@class='button btn btn-default button-medium']");
     private final static By I_AGREE_CHECKBOX_LOCATOR = By.cssSelector("#cgv");
     private final static By CHECKOUT_MESSAGE = By.cssSelector(".alert.alert-warning");
     private final static By ITEM_LOCATOR = By.xpath("//td/p[@class='product-name']/a");
@@ -43,6 +43,11 @@ public class ShoppingCartPage extends BasePage{
     public void clickProcessedToCheckoutButtonForAddress() {
         logger.info("Clicking ProcessedToCheckout for address button");
         driver.findElement(PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS).click();
+    }
+
+    @Step
+    public void WaitQWER(){
+        waitForElementDisplayed(PROCESSED_TO_CHECKOUT_BUTTON_FOR_ADDRESS);
     }
 
     @Step

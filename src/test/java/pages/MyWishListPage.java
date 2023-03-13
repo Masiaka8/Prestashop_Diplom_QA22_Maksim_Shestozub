@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class MyWishListPage extends BasePage{
 
-    private final static By WISH_LIST_AMOUNT_LOCATOR = By.cssSelector(".bold.align_center");
-    protected static final By MY_WISH_LIST_LOCATOR = By.xpath("//a[@href='javascript:;' and contains(@onclick, 'javascript:WishlistManage')]");
+    private static final By WISH_LIST_AMOUNT_LOCATOR = By.cssSelector(".bold.align_center");
+    private static final By MY_WISH_LIST_LOCATOR = By.xpath("//a[@href='javascript:;' and contains(@onclick, 'javascript:WishlistManage')]");
     private static final String ITEM_ON_WISH_LIST = "//*[@class='product-name' and contains(text(),'%s')]/small/ancestor::p";
 
 
@@ -35,7 +35,4 @@ public class MyWishListPage extends BasePage{
         logger.info("Item by name: {} is displayed", itemName);
         return driver.findElement(By.xpath(String.format(ITEM_ON_WISH_LIST, itemName))).isDisplayed();
     }
-
-
-
 }

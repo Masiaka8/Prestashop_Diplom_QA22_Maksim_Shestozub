@@ -2,8 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import modals.NewAddressModal;
-import modals.NewUserModal;
+import modals.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +11,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
 import utils.PropertyReader;
-
 import java.util.concurrent.TimeUnit;
 
 @Listeners(TestListener.class)
@@ -21,9 +19,8 @@ public abstract class BaseTest {
     public final static String BASE_URL = PropertyReader.getProperty("base_url");
     public final static String BASE_USERNAME = PropertyReader.getProperty("username");
     public final static String BASE_PASSWORD = PropertyReader.getProperty("password");
-    protected String userEmail = faker.internet().emailAddress();
-    protected String userPassword;
     protected WebDriver driver;
+    protected String userEmail = faker.internet().emailAddress();
     protected HomePage homePage;
     protected AuthenticationFirstStepPage authenticationFirstStepPage;
     protected AuthenticationSecondStepPage authenticationSecondStepPage;
@@ -32,6 +29,11 @@ public abstract class BaseTest {
     protected NewAddressModal newAddressModal;
     protected AddAddressPage addAddressPage;
     protected MyAddressesPage myAddressesPage;
+    protected WomenPage womenPage;
+    protected ProductDetailsPage productDetailsPage;
+    protected BaseModal baseModal;
+    protected ShoppingCartPage shoppingCartPage;
+    protected MyWishListPage myWishListPage;
 
 
     @BeforeClass(alwaysRun = true)
@@ -40,6 +42,7 @@ public abstract class BaseTest {
         String headless = System.getProperty("headless", "false");
         if(browserName.equals("Chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--window-size=1900,600");
             if(headless.equals("true")) {
                 options.addArguments("--headless");}
             WebDriverManager.chromedriver().setup();
@@ -64,18 +67,16 @@ public abstract class BaseTest {
         newAddressModal = new NewAddressModal(driver);
         addAddressPage = new AddAddressPage(driver);
         myAddressesPage = new MyAddressesPage(driver);
-
+        womenPage = new WomenPage(driver);
+        productDetailsPage = new ProductDetailsPage(driver);
+        baseModal = new BaseModal(driver);
+        shoppingCartPage = new ShoppingCartPage(driver);
+        myWishListPage = new MyWishListPage(driver);
     }
-
-    public void userRegistration() {
-        userEmail = faker.internet().emailAddress();
-        userPassword = faker.internet().password();
-    }
-
 
     @BeforeMethod(alwaysRun = true)
     public void  navigate() {
-        driver.get("http://prestashop.qatestlab.com.ua/en/");
+        driver.get(BASE_URL);
     }
 
     @AfterClass(alwaysRun = true)

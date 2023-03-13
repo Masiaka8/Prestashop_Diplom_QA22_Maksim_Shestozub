@@ -7,7 +7,7 @@ public class CartTest extends BaseTest{
 
     private final static String ITEM_NAME ="Faded Short Sleeve T-shirts";
 
-    @Test(groups = {"Smoke"}, description = "Test to payment verification")
+    @Test(groups = {"Smoke"}, description = "Test to add item in cart")
     public void addItemToCartTest() {
         homePage.clickWomenButton();
         womenPage.openItemByName(ITEM_NAME);

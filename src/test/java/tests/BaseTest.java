@@ -76,7 +76,7 @@ public abstract class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void  navigate() {
-        driver.get("http://prestashop.qatestlab.com.ua/en/");
+        driver.get(BASE_URL);
     }
 
     @AfterClass(alwaysRun = true)

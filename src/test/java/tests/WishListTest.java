@@ -29,5 +29,7 @@ public class WishListTest extends BaseTest{
         homePage.clickMyAccountButton();
         myAccountPage.clickWishListButton();
         Assert.assertEquals(myWishListPage.getAmountOfItem(), 1);
+        myWishListPage.clickMyWishList();
+        Assert.assertTrue(myWishListPage.itemInWishListIsDisplayed(ITEM_NAME));
     }
 }

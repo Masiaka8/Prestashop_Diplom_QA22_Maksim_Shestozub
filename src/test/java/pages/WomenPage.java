@@ -17,7 +17,7 @@ public class WomenPage extends BasePage {
     private final static By DROPDOWN_SORTING_LOCATOR = By.cssSelector("#selectProductSort");
     private final static By LOADING_ICON_LOCATOR = By.xpath("//*[@class = 'product_list grid row']//img[@src='http://prestashop.qatestlab.com.ua/img/loader.gif' and contains(text(), '')]");
     private final static By ITEM_BUTTON = By.cssSelector("#center_column .product-name");
-    private final static By OPTION_BAGS_LOCATOR = By.cssSelector("#uniform-layered_category_16");
+    private final static String OPTION_CHECKBOX_LOCATOR = "//a[@rel ='nofollow' and contains(text(),'%s')]/ancestor::li//input[@class ='checkbox']";
 
 
     public WomenPage(WebDriver driver) {
@@ -72,16 +72,8 @@ public class WomenPage extends BasePage {
     }
 
     @Step
-    public void clickOptionBags() {
-        logger.info("Clicking bags checkbox");
-        driver.findElement(OPTION_BAGS_LOCATOR).click();
-    }
-
-    @Step
     public void setFilter(String filterName) {
-        List<WebElement> checkbox = driver.findElements(By.cssSelector("#ul_layered_category_0"));
-        for (int i = 0; i < checkbox.size(); i++) {
-            checkbox.get(i).click();
-        }
+        logger.info("Set filter {}", filterName);
+        driver.findElement(By.xpath(String.format(OPTION_CHECKBOX_LOCATOR, filterName))).click();
     }
 }

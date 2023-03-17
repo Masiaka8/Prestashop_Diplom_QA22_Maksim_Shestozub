@@ -32,9 +32,9 @@ Prestashop is a test site an online clothing store.
 #### Running tests:
 1. TestNG command for run: - mvn clean test
 2. Running Specific Tests and Methods:
-> - mvn clean test -DsuiteXmlFile="smokeTest.xml"
-> - mvn clean test -DsuiteXmlFile="regressionTest.xml" 
-> - mvn clean test -DsuiteXmlFile="negativeTest.xml"
+> - mvn clean test -DsuiteXmlFile="smokeTests.xml"
+> - mvn clean test -DsuiteXmlFile="regressionTests.xml" 
+> - mvn clean test -DsuiteXmlFile="negativeTests.xml"
 3. Command to run tests from one class: 
 > mvn clean test -Dtest="LoginTest"
 4. Command to run one test from a class: 

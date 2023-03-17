@@ -79,7 +79,7 @@ public abstract class BaseTest {
         driver.get(BASE_URL);
     }
 
-    @BeforeMethod(onlyForGroups = "LogIn")
+    @BeforeMethod(alwaysRun = true, onlyForGroups = "LogIn")
     public void registrationNewUser() {
         homePage.clickLoginButton();
         authenticationFirstStepPage.emailNewInput(BASE_USERNAME);

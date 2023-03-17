@@ -89,7 +89,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <suiteXmlFile>smokeTest.xml</suiteXmlFile>
+        <suiteXmlFile>smokeTests.xml</suiteXmlFile>
     </properties>
 
 </project>

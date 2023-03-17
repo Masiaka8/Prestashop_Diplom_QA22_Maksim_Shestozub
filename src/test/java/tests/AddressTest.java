@@ -8,18 +8,12 @@ import org.testng.annotations.Test;
 
 public class AddressTest extends BaseTest{
 
-    @Test(groups = {"Regressive"}, description = "Test to add delivery address")
+    @Test(groups = {"Regressive", "LogIn"}, description = "Test to add delivery address")
     public void addNewAddress() {
         homePage.clickLoginButton();
-        authenticationFirstStepPage.emailNewInput(userEmail);
-        authenticationFirstStepPage.clickCreateButton();
-        User testUser = User.builder()
-                .lastName(faker.name().lastName())
-                .firstName(faker.name().firstName())
-                .password(faker.internet().password())
-                .build();
-        newUserModal.fillFormUser(testUser);
-        authenticationSecondStepPage.clickRegisterButton();
+        authenticationFirstStepPage.setUsername(BASE_USERNAME);
+        authenticationFirstStepPage.setPassword(BASE_PASSWORD);
+        authenticationFirstStepPage.clickSignInButton();
         myAccountPage.addMyFirstAddress();
         Address testAddress = Address.builder()
                 .firstName(faker.name().firstName())

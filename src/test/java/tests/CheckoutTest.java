@@ -10,18 +10,12 @@ public class CheckoutTest extends BaseTest{
 
     private final static String ITEM_NAME ="Faded Short Sleeve T-shirts";
 
-    @Test(groups = {"Smoke"}, description = "Test to payment verification")
+    @Test(groups = {"Smoke", "LogIn"}, description = "Test to payment verification")
     public void checkoutTest() {
         homePage.clickLoginButton();
-        authenticationFirstStepPage.emailNewInput(userEmail);
-        authenticationFirstStepPage.clickCreateButton();
-        User testUser = User.builder()
-                .lastName(faker.name().lastName())
-                .firstName(faker.name().firstName())
-                .password(faker.internet().password())
-                .build();
-        newUserModal.fillFormUser(testUser);
-        authenticationSecondStepPage.clickRegisterButton();
+        authenticationFirstStepPage.setUsername(BASE_USERNAME);
+        authenticationFirstStepPage.setPassword(BASE_PASSWORD);
+        authenticationFirstStepPage.clickSignInButton();
         myAccountPage.addMyFirstAddress();
         Address testAddress = Address.builder()
                 .firstName(faker.name().firstName())

@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import dataModels.User;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import modals.*;
 import org.openqa.selenium.WebDriver;
@@ -17,10 +18,9 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseTest {
     protected static Faker faker = new Faker();
     public final static String BASE_URL = PropertyReader.getProperty("base_url");
-    public final static String BASE_USERNAME = PropertyReader.getProperty("username");
-    public final static String BASE_PASSWORD = PropertyReader.getProperty("password");
+    public final String BASE_USERNAME = faker.internet().emailAddress();
+    public final String BASE_PASSWORD = faker.internet().password();
     protected WebDriver driver;
-    protected String userEmail = faker.internet().emailAddress();
     protected HomePage homePage;
     protected AuthenticationFirstStepPage authenticationFirstStepPage;
     protected AuthenticationSecondStepPage authenticationSecondStepPage;
@@ -77,6 +77,21 @@ public abstract class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void  navigate() {
         driver.get(BASE_URL);
+    }
+
+    @BeforeMethod(alwaysRun = true, onlyForGroups = "LogIn")
+    public void registrationNewUser() {
+        homePage.clickLoginButton();
+        authenticationFirstStepPage.emailNewInput(BASE_USERNAME);
+        authenticationFirstStepPage.clickCreateButton();
+        User testUser = User.builder()
+                .lastName(faker.name().lastName())
+                .firstName(faker.name().firstName())
+                .password(BASE_PASSWORD)
+                .build();
+        newUserModal.fillFormUser(testUser);
+        authenticationSecondStepPage.clickRegisterButton();
+        homePage.clickSignOutButton();
     }
 
     @AfterClass(alwaysRun = true)

@@ -9,12 +9,12 @@ public class RegistrationTest extends BaseTest{
     @Test(groups = {"Smoke"}, description = "Test to registration users")
     public void newUserRegistrationTest() {
         homePage.clickLoginButton();
-        authenticationFirstStepPage.emailNewInput(userEmail);
+        authenticationFirstStepPage.emailNewInput(BASE_USERNAME);
         authenticationFirstStepPage.clickCreateButton();
         User testUser = User.builder()
                 .lastName(faker.name().lastName())
                 .firstName(faker.name().firstName())
-                .password(faker.internet().password())
+                .password(BASE_PASSWORD)
                 .build();
         newUserModal.fillFormUser(testUser);
         authenticationSecondStepPage.clickRegisterButton();

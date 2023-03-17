@@ -9,19 +9,12 @@ public class WishListTest extends BaseTest{
     private final static String ITEM_NAME ="Faded Short Sleeve T-shirts";
 
 
-    @Test(groups = {"Regressive"}, description = "Test to add item in wishlist")
+    @Test(groups = {"Regressive", "LogIn"}, description = "Test to add item in wishlist")
     public void addItemToWishlist() {
         homePage.clickLoginButton();
-        authenticationFirstStepPage.emailNewInput(userEmail);
-        authenticationFirstStepPage.clickCreateButton();
-        User testUser = User.builder()
-                .lastName(faker.name().lastName())
-                .firstName(faker.name().firstName())
-                .password(faker.internet().password())
-                .build();
-        newUserModal.fillFormUser(testUser);
-        authenticationSecondStepPage.clickRegisterButton();
-        baseModal.goToHomePage();
+        authenticationFirstStepPage.setUsername(BASE_USERNAME);
+        authenticationFirstStepPage.setPassword(BASE_PASSWORD);
+        authenticationFirstStepPage.clickSignInButton();
         homePage.clickWomenButton();
         womenPage.openItemByName(ITEM_NAME);
         productDetailsPage.clickAddToWishList();

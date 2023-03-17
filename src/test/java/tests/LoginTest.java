@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
 
-    @Test(retryAnalyzer = RetryAnalyzer.class, groups = {"Smoke"}, description = "Authorization test")
+    @Test(retryAnalyzer = RetryAnalyzer.class, groups = {"Smoke", "LogIn"}, description = "Authorization test")
     public void positiveLoginTest() {
         homePage.clickLoginButton();
         authenticationFirstStepPage.setUsername(BASE_USERNAME);
@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest{
         Assert.assertTrue(authenticationFirstStepPage.invalidEmailMessage());
     }
 
-    @Test(groups = {"Regressive"}, description = "Test to check sign out button")
+    @Test(groups = {"Regressive", "LogIn"}, description = "Test to check sign out button")
     public void logOutTest() {
         homePage.clickLoginButton();
         authenticationFirstStepPage.setUsername(BASE_USERNAME);
